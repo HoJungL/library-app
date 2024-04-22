@@ -3,47 +3,47 @@ package com.group.libraryapp.service.user;
 import com.group.libraryapp.dto.user.request.UserCreateRequest;
 import com.group.libraryapp.dto.user.request.UserUpdateRequest;
 import com.group.libraryapp.dto.user.response.UserResponse;
-import com.group.libraryapp.repository.user.UserRepository;
+import com.group.libraryapp.repository.user.UserJdbcRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserServiceV1 {
 
-    private final UserRepository userRepository;
+    private final UserJdbcRepository userJdbcRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceV1(UserJdbcRepository userJdbcRepository) {
+        this.userJdbcRepository = userJdbcRepository;
     }
 
 
     //Create
     public void saveUser(UserCreateRequest request) {
-        userRepository.saveUser(request.getName(), request.getAge());
+        userJdbcRepository.saveUser(request.getName(), request.getAge());
     }
 
 
     //Read
     public List<UserResponse> getUsers() {
-        return userRepository.getUsers();
+        return userJdbcRepository.getUsers();
     }
 
     //Update
     public void updateUser(UserUpdateRequest request) {
         // 만약 isUserNotExist가 false라면
-        if (userRepository.isUserNotExist(request.getId())) {
+        if (userJdbcRepository.isUserNotExist(request.getId())) {
             throw new IllegalArgumentException();
         }
-        userRepository.updateUserName(request.getName(), request.getId());
+        userJdbcRepository.updateUserName(request.getName(), request.getId());
 
     }
 
     //Delete
     public void deleteUser(String name) {
-        if (userRepository.isUserNotExist(name)) {
+        if (userJdbcRepository.isUserNotExist(name)) {
             throw new IllegalArgumentException();
         }
-        userRepository.deleteUser(name);
+        userJdbcRepository.deleteUser(name);
     }
 }
