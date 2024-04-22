@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookService {
 
-    private final BookRepository bookRepository;
+    private final BookMemoryRepository bookMemoryRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookService(BookMemoryRepository bookMemoryRepository) {
+        this.bookMemoryRepository = bookMemoryRepository;
     }
 
     public void saveBook() {
-        bookRepository.saveBook();
+        bookMemoryRepository.saveBook();
     }
 }
