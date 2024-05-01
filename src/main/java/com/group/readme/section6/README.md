@@ -35,4 +35,7 @@ git init : 이 프로젝트를 이제 git이 관리하겠다.
 git remote add origin [각자 주소]
 git add . : 파일 담기 (.은 모든 파일) 
 git status : 현재상황 확인하기
+
+git commit -m "메세지"
+
 ```
