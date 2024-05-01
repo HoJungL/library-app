@@ -38,4 +38,6 @@ git status : 현재상황 확인하기
 
 git commit -m "메세지"
 
+https://velog.io/@bami/GitGithub-%EC%9B%90%EA%B2%A9-%EC%A0%80%EC%9E%A5%EC%86%8C%EC%9D%98-%ED%8C%8C%EC%9D%BC%EC%9D%84-%EC%A7%80%EC%9A%B0%EA%B8%B0
+사이트 참조.
 ```

@@ -2,3 +2,8 @@
 build/
 .gradle/
 .idea/
+/src/main/resources/application.yml
+
+*.lock
+*.bin
+.DS_Store
