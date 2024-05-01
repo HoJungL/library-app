@@ -1,0 +1,47 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    hikari:
+      jdbc-url: "jdbc:h2:mem:library;MODE=MYSQL;NON_KEYWORDS=USER"
+      username: "sa"
+      password: ""
+      driver-class-name: org.h2.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+--- # 구분선
+# 특정 profile에서 실헁된다.
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource: # 어디를 참조 할것인가.
+    hikari:
+      jdbc-url: "jdbc:mysql://localhost/library" # JDBC : 자바 디비 커넥터.
+      username: "ghwjd5684"
+      password: "tnstngks2@A"
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
