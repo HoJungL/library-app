@@ -2,8 +2,12 @@
 build/
 .gradle/
 .idea/
-/src/main/resources/application.yml
-
-*.lock
-*.bin
+src/main/resources/application.yml
+buildOutputCleanup.lock
+executionHistory.bin
+executionHistory.lock
+fileHashes.bin
+fileHashes.lock
+previous-compilation-data.bin
+resourceHashesCache.bin
 .DS_Store
