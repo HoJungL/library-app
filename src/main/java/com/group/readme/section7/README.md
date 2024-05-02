@@ -74,6 +74,11 @@ sudo systemctl restart mysqld : mysqld 프로그램을 재시작!
 
 mysql -u root -p  root를 내꺼로 바꾸면 되겠지?
 
+임시 비밀번호 확인하는 명령어
+sudo cat /var/log/mysqld.log | grep "A temporary password"
+
+ c35qJLq/W<O3
+ 
 비번바꾸는 방법
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY "비번";
 비번 규칙 : 8자이상, 대소문자,숫자 특수문자 다 있어야함 ㅎ 
@@ -82,3 +87,31 @@ exit; : 나가기
 https://yumserv.tistory.com/136 : ec2 서버에서도 내 아이디를 새로 만들고... 해야 됩니다 ㅠㅠ
 
 ``` 
+## 빌드와 실행, 접속
+- Swap 설정 : 속도 느릴때 쓰는 방법
+```
+# swap 메모리를 할당한다 (128Mb *16 = 2GB)
+sudo dd if=/dev/zero of=/swapfile bs=128M count=16
+
+#스왑 파일에 대한 권한 업데이트
+sudo chmod 600 /swapfile
+
+# swap 영역 설정
+sudo mkswap /swapfile
+
+# swap 파일을 사용할 수 있도록 만듬
+sudo swapon /swapfile
+
+# swap 성공 확인
+sudo swapon -s
+```
+- 빌드
+```
+- 빌드 준비 (최초 1회)
+chmod +x ./gradlew
+
+- 빌드 (gradle을 이용해 프로젝트 빌드. 이떄, 테스트는 안돌림)
+./gradlew build -x test 
+
+library-app-0.0.1-SNAPSHOT-plain.jar 이게 우리가 한거 뭉쳐놓은거임.
+```
